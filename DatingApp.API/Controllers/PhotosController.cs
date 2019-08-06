@@ -14,7 +14,6 @@ using System.Linq;
 
 namespace DatingApp.API.Controllers
 {
-    [Authorize]
     [Route("api/user/{userId}/photos")]
     [ApiController]
     public class PhotosController : ControllerBase
