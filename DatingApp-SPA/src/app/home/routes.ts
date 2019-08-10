@@ -12,7 +12,7 @@ import { MemberEditResolver } from '../_resolver/member-edit.resolver';
 import { PreventUnsavedChanges } from '../_guards/prevent-unsaved-changes-guard';
 import { ListsResolver } from '../_resolver/lists.resolver';
 import { MessagesResolver } from '../_resolver/messages';
-import { AdminPanelComponent } from '../admin-panel/admin-panel.component';
+import { AdminPanelComponent } from '../admin/admin-panel/admin-panel.component';
 
 export const appRoutes: Routes = [
     { path: '', component: HomeComponent },
