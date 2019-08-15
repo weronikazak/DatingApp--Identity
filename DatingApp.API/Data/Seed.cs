@@ -37,6 +37,7 @@ namespace DatingApp.API.Data
                 {
                     _userManager.CreateAsync(user, "password").Wait();
                     _userManager.AddToRoleAsync(user, "Member").Wait();
+                    user.Photos.SingleOrDefault().IsAccepted = true;
                 }
 
                 var adminUser = new User{

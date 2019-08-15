@@ -54,7 +54,7 @@ namespace DatingApp.API.Controllers
                 return Unauthorized ();
             }
  
-            var userFromRepo = await _repo.GetUser(userId);
+            var userFromRepo = await _repo.GetUser(userId, true);
  
             var file = photoForCreationDto.File;
             var uploadresults = new ImageUploadResult();
@@ -79,13 +79,14 @@ namespace DatingApp.API.Controllers
  
             var photo = _mapper.Map<Photo>(photoForCreationDto);
  
-            if (!userFromRepo.Photos.Any(u => u.IsMain))
-            {
-                photo.IsMain = true;
-            }
+            // if (!userFromRepo.Photos.Any(u => u.IsMain))
+            // {
+            //     photo.IsMain = true;
+                
+            // }
  
-            
             userFromRepo.Photos.Add(photo);
+
             if (await _repo.SaveAll())
             {
                 var photoToReturn = _mapper.Map<PhotoForReturnDto>(photo);
@@ -101,7 +102,7 @@ namespace DatingApp.API.Controllers
                 return Unauthorized();
             }
 
-            var user = await _repo.GetUser(userId);
+            var user = await _repo.GetUser(userId, true);
 
             if (!user.Photos.Any(p => p.Id == photoId)){
                 return Unauthorized();
@@ -134,7 +135,7 @@ namespace DatingApp.API.Controllers
                 return Unauthorized();
             }
 
-            var user = await _repo.GetUser(userId);
+            var user = await _repo.GetUser(userId, true);
 
             if (!user.Photos.Any(p => p.Id == photoId)){
                 return Unauthorized();

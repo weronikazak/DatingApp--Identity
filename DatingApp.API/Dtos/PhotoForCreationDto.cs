@@ -9,11 +9,14 @@ namespace DatingApp.API.Dtos
         public IFormFile File { get; set; }
         public string Description { get; set; }
         public DateTime DateAdded { get; set; }
+        public bool IsAccepted { get; set; }
         public string PublicId { get; set; }
 
         public PhotoForCreationDto(){
             DateAdded = DateTime.Now;
+            IsAccepted = false;
         }
+
         
     }
 }
