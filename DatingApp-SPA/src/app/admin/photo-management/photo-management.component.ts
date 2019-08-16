@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Photo } from 'src/app/_models/photo';
-import { AuthService } from 'src/app/_services/auth.service';
 import { AdminService } from 'src/app/_services/admin.service';
 
 @Component({

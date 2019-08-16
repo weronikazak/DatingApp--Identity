@@ -21,21 +21,23 @@ namespace DatingApp.API.Controllers
     {
         private readonly DataContext _context;
         private readonly UserManager<User> _userManager;
+        private IOptions<CloudinarySettings> _cloudinaryConfig;
         private Cloudinary _cloudinary;
 
         public AdminController(
             DataContext context,
             UserManager<User> userManager,
             IOptions<CloudinarySettings> cloudinaryConfig)
+            
         {
             _context = context;
             _userManager = userManager;
-            _cloudinary = cloudinaryConfig;
+            _cloudinaryConfig = cloudinaryConfig;
 
             Account acc = new Account(
-                _cloudinary.Value.CloudName,
-                _cloudinary.Value.ApiKey,
-                _cloudinary.Value.ApiSecret
+                _cloudinaryConfig.Value.CloudName,
+                _cloudinaryConfig.Value.ApiKey,
+                _cloudinaryConfig.Value.ApiSecret
             );
 
             _cloudinary = new Cloudinary(acc);
